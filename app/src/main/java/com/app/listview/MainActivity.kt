@@ -20,19 +20,19 @@ class MainActivity : AppCompatActivity() {
 
         listView = findViewById(R.id.List)
 
-        var countryList = resources.getStringArray(R.array.countries)// Define the list of countries
+        val countryList = resources.getStringArray(R.array.countries)// Define the list of countries
 
-        var arrayAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, countryList)// Create an ArrayAdapter to bind the list to the ListView
+        val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, countryList)// Create an ArrayAdapter to bind the list to the ListView
         listView.adapter = arrayAdapter// Bind the adapter to the ListView
 
         listView.setOnItemClickListener { parent, view, position, id ->
-            parent.getItemAtPosition(position).toString()
+
             val countryName:String = parent.getItemAtPosition(position).toString()
             Toast.makeText(applicationContext, "You selected $countryName", Toast.LENGTH_SHORT).show()
 
 
         }
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.List)) { v, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
